@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 11:13:47 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 10:20:56 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/28 14:02:04 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "../mlx/mlx.h"
-# define WIDTH 2
 # include <time.h>
 
 typedef enum		s_mode
 {
 					FREE = 0,
 					LINE = 1,
-					FILL = 2
+					FILL = 2,
+					ERASER = 3
 }					t_mode;
 
 typedef struct		s_settings
@@ -76,6 +76,7 @@ typedef struct		s_view
 	t_mode			mode;
 	t_image			*image;
 	int				draw;
+	int				width;
 }					t_view;
 
 void				init_window(t_settings settings);
@@ -95,6 +96,7 @@ void				draw_line(t_point p0, t_point p1, t_view *mlx, int rgb);
 void				draw_line_out(t_point p0, t_point p1, t_view *mlx, int rgb);
 void				draw_icons_line(t_view *view);
 void 				flood_fill(t_view *view, int x, int y, int oldcolor, int newcolor);
+void				clean_window(t_view *view);
 
 int					render_frame(t_view *view);
 

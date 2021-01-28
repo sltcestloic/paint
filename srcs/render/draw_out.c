@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 10:18:37 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 10:20:39 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/28 14:09:52 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	draw_point_out(int x, int y, int rgb, t_view *view)
 {
 	int	i;
-
+	int width = 2;
 	i = 0;
-	for(int ny=-WIDTH; ny<=WIDTH; ny++)
-    	for(int nx=-WIDTH; nx<=WIDTH; nx++)
-       		if(nx*nx+ny*ny <= WIDTH*WIDTH)
+	for(int ny=-width; ny<=width; ny++)
+    	for(int nx=-width; nx<=width; nx++)
+       		if(nx*nx+ny*ny <= width*width)
 			   	if (ny + y < 750 - 64)
 					mlx_pixel_put(view->mlx, view->window, nx + x, ny + y, rgb);
 }

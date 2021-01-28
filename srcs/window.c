@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:57:02 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/27 14:43:29 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/28 14:09:09 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		handle_keypress(int keycode, t_view *view)
    		mlx_destroy_window(view->mlx, view->window);
 		exit(0);
 	}
+	else if (keycode == 49)
+		clean_window(view);
 	return (0);
 }
 
@@ -75,11 +77,13 @@ void	init_window(t_settings settings)
 			put_pixel(&img, i, j, 0x0FFFFFF);
 	for (int i = 0; i < settings.width; i++)
 		for (int j = settings.height - 66; j < settings.height; j++)
-			mlx_pixel_put(view.mlx, view.window, i, j, 0x0FFFFFF);	
+			mlx_pixel_put(view.mlx, view.window, i, j, 0x0FFFFFF);
 	view.image = &img;
+	view.width = 2;
 	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/pinceau.xpm");
 	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/crayon.xpm");
 	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/bucket.xpm");
+	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/eraser.xpm");
 	switch_mode(&view, FREE);
 	render_frame(&view);
 	mlx_loop(view.mlx);
