@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 12:23:32 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/27 15:02:12 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/28 10:27:00 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int		handle_click(int button, int x, int y, t_view *view)
 		else if (view->mode == FILL)
 		{
 			flood_fill(view, x, y, get_pixel_color(view->image, x, y), 0x0000000);
+			render_frame(view);
 		}
 	}
 	else if (button == 2)

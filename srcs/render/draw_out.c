@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_out.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/27 12:26:11 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 10:37:45 by lbertran         ###   ########lyon.fr   */
+/*   Created: 2021/01/28 10:18:37 by lbertran          #+#    #+#             */
+/*   Updated: 2021/01/28 10:20:39 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/paint.h"
 
-void	draw_point(int x, int y, int rgb, t_view *view)
+void	draw_point_out(int x, int y, int rgb, t_view *view)
 {
 	int	i;
 
@@ -21,11 +21,10 @@ void	draw_point(int x, int y, int rgb, t_view *view)
     	for(int nx=-WIDTH; nx<=WIDTH; nx++)
        		if(nx*nx+ny*ny <= WIDTH*WIDTH)
 			   	if (ny + y < 750 - 64)
-					put_pixel(view->image, nx + x, ny + y, rgb);
-	render_frame(view);
+					mlx_pixel_put(view->mlx, view->window, nx + x, ny + y, rgb);
 }
 
-void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
+void    draw_line_out(t_point p0, t_point p1, t_view *mlx, int rgb)
 {
     int     dx;
     int     dy;
@@ -47,7 +46,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dy = dy * 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.x++) == p1.x)
                                 break;
                             if ((e = e - dy) < 0)
@@ -64,7 +63,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dx = dx * 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.y++) == p1.y)
                                 break;
                             if ((e = e - dx) < 0)
@@ -84,7 +83,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dy *= 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.x++) == p1.x)
                                 break;
                             if ((e = e + dy) < 0)
@@ -101,7 +100,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dx *= 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.y--) == p1.y)
                                 break;
                             if ((e = e + dx) > 0)
@@ -116,7 +115,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
             else
             {
                 while (p0.x++ != p1.x)
-					draw_point(p0.x, p0.y, rgb, mlx);
+					draw_point_out(p0.x, p0.y, rgb, mlx);
             }
         }
         else
@@ -132,7 +131,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dy = dy * 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.x--) == p1.x)
                                 break;
                             if ((e = e + dy) >= 0)
@@ -149,7 +148,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dx = dx * 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.y++) == p1.y)
                                 break;
                             if ((e = e + dx) <= 0)
@@ -169,7 +168,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dy = dy * 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.x--) == p1.x)
                                 break;
                             if ((e = e - dy) >= 0)
@@ -186,7 +185,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
                         dx = dx * 2;
                         while (1)
                         {
-							draw_point(p0.x, p0.y, rgb, mlx);
+							draw_point_out(p0.x, p0.y, rgb, mlx);
                             if ((p0.y--) == p1.y)
                                 break;
                             if ((e = e - dx) >= 0)
@@ -201,7 +200,7 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
             else
             {
                 while (p0.x-- != p1.x)
-					draw_point(p0.x, p0.y, rgb, mlx);
+					draw_point_out(p0.x, p0.y, rgb, mlx);
             }
         }
     }
@@ -212,41 +211,13 @@ void    draw_line(t_point p0, t_point p1, t_view *mlx, int rgb)
             if (dy > 0)
             {
                 while (p0.y++ != p1.y)
-					draw_point(p0.x, p0.y, rgb, mlx);
+					draw_point_out(p0.x, p0.y, rgb, mlx);
             }
             else
             {
                 while (p0.y-- != p1.y)
-					draw_point(p0.x, p0.y, rgb, mlx);
+					draw_point_out(p0.x, p0.y, rgb, mlx);
             }
         }
     }
-}
-
-void	draw_icons_line(t_view *view)
-{
-	t_point	point_a;
-	t_point	point_b;
-
-	point_a.x = 0;
-	point_a.y = 750 - 64;
-	point_b.x = view->settings->width;
-	point_b.y = 750 - 64;
-	draw_line_out(point_a, point_b, view, 0x0000000);
-}
-
-void flood_fill(t_view *view, int x, int y, int oldcolor, int newcolor)
-{
-	if (get_pixel_color(view->image, x, y) == oldcolor)
-	{
-		put_pixel(view->image, x, y, newcolor);
-		if (x < view->settings->width - 1)
-			flood_fill(view, x + 1, y, oldcolor, newcolor);
-		if (y < view->settings->height - 66)
-			flood_fill(view, x, y + 1, oldcolor, newcolor);
-		if (x > 0)
-			flood_fill(view, x - 1, y, oldcolor, newcolor);
-		if (y > 0)
-			flood_fill(view, x, y - 1, oldcolor, newcolor);
-	}
 }

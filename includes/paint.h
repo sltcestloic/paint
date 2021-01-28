@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 11:13:47 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/27 14:45:05 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/28 10:20:56 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,9 @@ int					handle_click_release(int button, int x, int y, t_view *view);
 int					handle_mouse_motion(int x, int y, t_view *view);
 
 void				draw_point(int x, int y, int rgb, t_view *view);
+void				draw_point_out(int x, int y, int rgb, t_view *view);
 void				draw_line(t_point p0, t_point p1, t_view *mlx, int rgb);
+void				draw_line_out(t_point p0, t_point p1, t_view *mlx, int rgb);
 void				draw_icons_line(t_view *view);
 void 				flood_fill(t_view *view, int x, int y, int oldcolor, int newcolor);
 

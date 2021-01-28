@@ -6,7 +6,7 @@
 #    By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/18 16:40:32 by lbertran          #+#    #+#              #
-#    Updated: 2021/01/27 13:18:24 by lbertran         ###   ########lyon.fr    #
+#    Updated: 2021/01/28 10:21:14 by lbertran         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC		= 	mode.c \
 			paint.c \
 			window.c \
 			hook/mouse_hook.c \
+			render/draw_out.c \
 			render/draw.c \
 			render/frame.c \
 			render/pixel.c \
