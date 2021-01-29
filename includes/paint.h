@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 11:13:47 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 14:02:04 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/29 11:32:58 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@
 # include <fcntl.h>
 # include "../mlx/mlx.h"
 # include <time.h>
+# include <math.h>
 
 typedef enum		s_mode
 {
 					FREE = 0,
 					LINE = 1,
 					FILL = 2,
-					ERASER = 3
+					ERASER = 3,
+					CIRCLE = 4
 }					t_mode;
 
 typedef struct		s_settings
@@ -95,6 +97,7 @@ void				draw_point_out(int x, int y, int rgb, t_view *view);
 void				draw_line(t_point p0, t_point p1, t_view *mlx, int rgb);
 void				draw_line_out(t_point p0, t_point p1, t_view *mlx, int rgb);
 void				draw_icons_line(t_view *view);
+void 				draw_circle(t_view *view, t_point center, t_point ext, int rgb);
 void 				flood_fill(t_view *view, int x, int y, int oldcolor, int newcolor);
 void				clean_window(t_view *view);
 

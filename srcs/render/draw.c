@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 12:26:11 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 14:03:13 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/29 13:18:22 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,5 +261,41 @@ void flood_fill(t_view *view, int x, int y, int oldcolor, int newcolor)
 			flood_fill(view, x - 1, y, oldcolor, newcolor);
 		if (y > 0)
 			flood_fill(view, x, y - 1, oldcolor, newcolor);
+	}
+}
+
+void bresenham_circle(t_view *view, int xc, int yc, int x, int y, int rgb)
+{
+	draw_point(xc+x, yc+y, rgb, view);
+    draw_point(xc-x, yc+y, rgb, view); 
+    draw_point(xc+x, yc-y, rgb, view); 
+    draw_point(xc-x, yc-y, rgb, view); 
+    draw_point(xc+y, yc+x, rgb, view); 
+    draw_point(xc-y, yc+x, rgb, view); 
+    draw_point(xc+y, yc-x, rgb, view); 
+    draw_point(xc-y, yc-x, rgb, view); 
+}
+
+void draw_circle(t_view *view, t_point center, t_point ext, int rgb)
+{
+    int yc = center.y, xc = center.x;
+	int	yr = ext.y, xr = ext.x;
+	int dy = yc - yr;
+	int dx = xc - xr;
+    int radius = sqrt(dx * dx + dy * dy);
+	int d = 3 - 2 * radius;
+    int y = radius;
+	int x = 0;
+    while (y >= x)
+	{
+		x++;
+		if (d > 0)
+		{
+			y--;
+			d = d + 4 * (x - y) + 10;
+		}
+		else
+			d = d + 4 * x + 6;
+		bresenham_circle(view, xc, yc, x, y, rgb);
 	}
 }

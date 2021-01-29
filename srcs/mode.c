@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 12:30:00 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 14:05:54 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/29 11:23:01 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	switch_mode(t_view *view, int mode)
 {
 	t_point	a;
 	
-	if (mode > 3) return ;
+	if (mode > 4) return ;
 	view->mode = mode;
 	a = view->icons[mode].point_a;
 	a.y -= 64;

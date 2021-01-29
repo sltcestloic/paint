@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 14:57:02 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 14:09:09 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/29 11:23:11 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void	init_window(t_settings settings)
 	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/crayon.xpm");
 	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/bucket.xpm");
 	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/eraser.xpm");
+	add_icon(&view, "/Users/lbertran/Desktop/work/paint/textures/circle.xpm");
 	switch_mode(&view, FREE);
 	render_frame(&view);
 	mlx_loop(view.mlx);

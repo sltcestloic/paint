@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 12:23:32 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/28 14:07:38 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/01/29 11:33:53 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		handle_click(int button, int x, int y, t_view *view)
 			draw_point(x, y, view->mode == FREE ? 0x0000000 : 0x0FFFFFF, view);
 			render_frame(view);
 		}
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 			if (point_is_in_area(point, view->icons[i].point_a, view->icons[i].point_b))
 			{
 				view->draw = 0;
@@ -61,6 +61,26 @@ int		handle_click(int button, int x, int y, t_view *view)
 		{
 			flood_fill(view, x, y, get_pixel_color(view->image, x, y), 0x0000000);
 			render_frame(view);
+		}
+		else if (view->mode == CIRCLE)
+		{
+			if (view->draw == 0)
+			{
+				draw_point(x, y, 0x0000000, view);
+				view->mouse->point_a.x = x;
+				view->mouse->point_a.y = y;
+				view->draw = 1;
+				render_frame(view);
+				
+			}
+			else
+			{
+				view->mouse->point_b.x = x;
+				view->mouse->point_b.y = y;
+				view->draw = 0;
+				draw_circle(view, view->mouse->point_a, view->mouse->point_b, 0x0000000);
+				render_frame(view);
+			}
 		}
 	}
 	else if (button == 2)
