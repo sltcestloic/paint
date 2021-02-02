@@ -6,7 +6,7 @@
 /*   By: lbertran <lbertran@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/27 12:23:32 by lbertran          #+#    #+#             */
-/*   Updated: 2021/01/29 11:33:53 by lbertran         ###   ########lyon.fr   */
+/*   Updated: 2021/02/02 12:16:34 by lbertran         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int		handle_click(int button, int x, int y, t_view *view)
 			}
 			else
 			{
+				draw_point(view->mouse->point_a.x, view->mouse->point_a.y, 0x0FFFFFF, view);
 				view->mouse->point_b.x = x;
 				view->mouse->point_b.y = y;
 				view->draw = 0;
